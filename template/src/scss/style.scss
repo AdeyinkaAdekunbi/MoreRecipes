@@ -1,0 +1,21 @@
+.main-content {
+    &.container {
+        margin: 1em auto;
+        .catalog-search {
+            width: 50%;
+        }
+        .fav-section {
+            border-left: 1px solid rgba(0, 0, 0, 0.125);
+        }
+        .card {
+            .card-img-top {
+                width: 100%;
+            }
+            .badge {
+                color: #000000;
+                position: absolute;
+                bottom: 0;
+            }
+        }
+    }
+}
