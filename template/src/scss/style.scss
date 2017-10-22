@@ -17,5 +17,12 @@
                 bottom: 0;
             }
         }
+        .mini-form {
+            max-width: 380px;
+            margin: 5em auto;
+            button {
+                width: 100%;
+            }
+        }
     }
 }
