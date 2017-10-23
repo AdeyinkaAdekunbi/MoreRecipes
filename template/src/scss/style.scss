@@ -18,10 +18,27 @@
             }
         }
         .mini-form {
-            max-width: 380px;
+            width: 380px;
             margin: 5em auto;
             button {
                 width: 100%;
+            }
+        }
+        .profile {
+            div {
+                margin: 2em auto;
+            }
+            img {
+                height: 256px;
+                border-radius: 50%;
+                margin: 1em auto;
+            }
+            span {
+                display: block;
+                font-weight: bold;
+            }
+            button {
+                width: 70%;
             }
         }
     }

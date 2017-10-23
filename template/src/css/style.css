@@ -11,7 +11,18 @@
     position: absolute;
     bottom: 0; }
   .main-content.container .mini-form {
-    max-width: 380px;
+    width: 380px;
     margin: 5em auto; }
     .main-content.container .mini-form button {
       width: 100%; }
+  .main-content.container .profile div {
+    margin: 2em auto; }
+  .main-content.container .profile img {
+    height: 256px;
+    border-radius: 50%;
+    margin: 1em auto; }
+  .main-content.container .profile span {
+    display: block;
+    font-weight: bold; }
+  .main-content.container .profile button {
+    width: 70%; }
