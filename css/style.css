@@ -10,3 +10,8 @@
     color: #000000;
     position: absolute;
     bottom: 0; }
+  .main-content.container .mini-form {
+    max-width: 380px;
+    margin: 5em auto; }
+    .main-content.container .mini-form button {
+      width: 100%; }
