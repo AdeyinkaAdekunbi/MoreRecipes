@@ -64,4 +64,9 @@ app.put('/api/recipes/:recipeId', (req, res) => res.status(200).send({
   downvotes: 0,
   favorited: false
 }));
+/**
+ * Delete A Recipe
+ * @description An API route that allows a user to delete a recipe from platform
+ */
+app.delete('/api/recipes/:recipeId', (req, res) => res.status(204).send());
 export default app;
