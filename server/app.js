@@ -24,5 +24,44 @@ app.post('/api/recipes', (req, res) => res.status(201).send({
   id: 1,
   url: '/api/recipes/1'
 }));
-
+/**
+ * Modify A Recipe
+ * @returns {object} A JSON object containing the updated data of the modified recipe
+ * @description An API route that allows a user to modify a recipe on platform
+ */
+app.put('/api/recipes/:recipeId', (req, res) => res.status(200).send({
+  id: 1,
+  name: 'Updated Recipe Name',
+  image: '[base_64_image]',
+  ingredients: [{
+    id: 1,
+    name: 'Updated Ingredient One'
+  },
+  {
+    id: 2,
+    name: 'Updated Ingredient Two'
+  },
+  {
+    id: 3,
+    name: 'Updated Ingredient Three'
+  }
+  ],
+  directions: [{
+    id: 1,
+    name: 'Updated Direction One'
+  },
+  {
+    id: 2,
+    name: 'Updated Direction Two'
+  },
+  {
+    id: 3,
+    name: 'Updated Direction Three'
+  }
+  ],
+  additionalNotes: 'Additional Notes',
+  upvotes: 1,
+  downvotes: 0,
+  favorited: false
+}));
 export default app;
