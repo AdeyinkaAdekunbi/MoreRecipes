@@ -1,0 +1,19 @@
+{
+  "name": "more-recipes-server",
+  "version": "1.0.0",
+  "description": "More Recipes API Server",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adeyinka Adekunbi",
+  "license": "ISC",
+  "dependencies": {
+    "eslint-config-airbnb": "^16.1.0",
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "eslint": "^4.9.0",
+    "eslint-plugin-import": "^2.8.0"
+  }
+}
