@@ -1,1 +1,3 @@
 node_modules/
+/template/src/css/
+/template/src/js
