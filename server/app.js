@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Setup a default catch-all route that sends back a welcome message in JSON format.
-app.get('*', (req, res) => res.status(200).send({
+app.get('/', (req, res) => res.status(200).send({
   message: 'Welcome to the beginning of nothingness.',
 }));
 
@@ -69,4 +69,117 @@ app.put('/api/recipes/:recipeId', (req, res) => res.status(200).send({
  * @description An API route that allows a user to delete a recipe from platform
  */
 app.delete('/api/recipes/:recipeId', (req, res) => res.status(204).send());
+ /**
+* Get All Recipes
+* @returns {array} A JSON array of recipes available on the platform
+* @description An API route that allows a user to get all recipes on the platform
+*/
+app.get('/api/recipes', (req, res) => res.status(200).send([{
+ id: 1,
+ name: 'Recipe Name',
+ image: '[base_64_string]',
+ ingredients: [{
+   id: 1,
+   name: 'Ingredient One'
+ },
+ {
+   id: 2,
+   name: 'Ingredient Two'
+ },
+ {
+   id: 3,
+   name: 'Ingredient Three'
+ }
+ ],
+ directions: [{
+   id: 1,
+   name: 'Direction One'
+ },
+ {
+   id: 2,
+   name: 'Direction Two'
+ },
+ {
+   id: 3,
+   name: 'Direction Three'
+ }
+ ],
+ additionalNotes: '',
+ upvotes: 1,
+ downvotes: 0,
+ favorited: false
+},
+{
+ id: 2,
+ name: 'Second Recipe Name',
+ image: '[base_64_string]',
+ ingredients: [{
+   id: 1,
+   name: 'Ingredient One'
+ },
+ {
+   id: 2,
+   name: 'Ingredient Two'
+ },
+ {
+   id: 3,
+   name: 'Ingredient Three'
+ }
+ ],
+ directions: [{
+   id: 1,
+   name: 'Direction One'
+ },
+ {
+   id: 2,
+   name: 'Direction Two'
+ },
+ {
+   id: 3,
+   name: 'Direction Three'
+ }
+ ],
+ additionalNotes: 'Second Recipe',
+ upvotes: 1,
+ downvotes: 0,
+ favorited: false
+},
+{
+ id: 3,
+ name: 'Third Recipe Name',
+ image: '[base_64_string]',
+ ingredients: [{
+   id: 1,
+   name: 'Ingredient One'
+ },
+ {
+   id: 2,
+   name: 'Ingredient Two'
+ },
+ {
+   id: 3,
+   name: 'Ingredient Three'
+ }
+ ],
+ directions: [{
+   id: 1,
+   name: 'Direction One'
+ },
+ {
+   id: 2,
+   name: 'Direction Two'
+ },
+ {
+   id: 3,
+   name: 'Direction Three'
+ }
+ ],
+ additionalNotes: 'Third Recipe',
+ upvotes: 1,
+ downvotes: 0,
+ favorited: false
+}
+]));
+
+
 export default app;
