@@ -1,6 +1,7 @@
 import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
+import validation from 'express-validation';
 import routes from './routes';
 
 // Set up the express app
@@ -15,5 +16,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // Pass app context to our routes for route mapping
 routes(app);
+
+// Ensure validation errors are returned as JSON object
+app.use((err, req, res, next) => {
+  // eslint sees unused variable as error
+  console.info(next);
+  if (err instanceof validation.ValidationError) {
+    return res.status(err.status).json(err);
+  }
+  res.status(500);
+});
 
 export default app;
