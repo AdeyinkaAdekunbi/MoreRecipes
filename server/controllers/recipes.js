@@ -1,7 +1,7 @@
 import newRecipe from '../models/newRecipe';
 import updatedRecipe from '../models/updatedRecipe';
 import allRecipes from '../models/allRecipes';
-import mostUpvotedRecipe from '../models/mostUpvotedRecipes';
+import sortedRecipes from '../models/sortedRecipes';
 
 module.exports = {
   createRecipe(req, res) {
@@ -17,11 +17,15 @@ module.exports = {
     res.status(204).send();
   },
   getRecipes(req, res) {
-    // Return Dummy Data with HTTP OK
-    res.status(200).send(allRecipes());
-  },
-  getMostUpvoted(req, res) {
-    // Return Dummy Data with HTTP OK
-    res.status(200).send(mostUpvotedRecipe(req.query));
+    const sortBy = req.query.sort;
+    const orderBy = req.query.order;
+
+    // Check if request has sort and order parameters 
+    // and return dummy upvoted data
+    if (sortBy && orderBy) {
+      res.status(200).send(sortedRecipes(req.query));
+    } else { // Unrecognised or No parameter is passed
+      res.status(200).send(allRecipes());
+    }
   }
 };
