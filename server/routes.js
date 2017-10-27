@@ -1,4 +1,5 @@
 import * as recipeController from './controllers/recipes';
+import * as reviewController from './controllers/reviews';
 
 module.exports = (app) => {
   import * as recipeController from './controllers/recipes';
@@ -30,6 +31,13 @@ module.exports = (app) => {
   * @description An API route that allows a user to get all recipes
   */
   app.get('/api/recipes', recipeController.getRecipes);
+
+  /**
+  * Post a review for recipe
+  * @returns {object} A JSON object with the id and url of the review
+  * @description An API route that allows a user to post review
+  */
+  app.post('/api/recipes/:recipeId/reviews', reviewController.createReview);
 
   /**
    * @description API route to catch all unregistered GET calls
