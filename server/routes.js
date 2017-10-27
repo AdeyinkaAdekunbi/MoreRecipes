@@ -2,9 +2,6 @@ import * as recipeController from './controllers/recipes';
 import * as reviewController from './controllers/reviews';
 
 module.exports = (app) => {
-  import * as recipeController from './controllers/recipes';
-
-module.exports = (app) => {
   /**
    * Add A Recipe
    * @returns {object} A JSON object with the id and url of the added recipe
@@ -53,4 +50,3 @@ module.exports = (app) => {
     message: 'Welcome to More Recipes.',
   }));
 }
-};
