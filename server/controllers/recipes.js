@@ -1,6 +1,7 @@
 import newRecipe from '../models/newRecipe';
 import updatedRecipe from '../models/updatedRecipe';
 import allRecipes from '../models/allRecipes';
+import mostUpvotedRecipe from '../models/mostUpvotedRecipes';
 
 module.exports = {
   createRecipe(req, res) {
@@ -18,5 +19,9 @@ module.exports = {
   getRecipes(req, res) {
     // Return Dummy Data with HTTP OK
     res.status(200).send(allRecipes());
+  },
+  getMostUpvoted(req, res) {
+    // Return Dummy Data with HTTP OK
+    res.status(200).send(mostUpvotedRecipe(req.query));
   }
 };
