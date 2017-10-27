@@ -9,5 +9,9 @@ module.exports = {
   updateRecipe(req, res) {
     // Return Dummy Data with HTTP OK
     res.status(200).send(updatedRecipe());
+  },
+  deleteRecipe(req, res) {
+    // Return Dummy Data with HTTP NO CONTENT
+    res.status(204).send();
   }
 };
