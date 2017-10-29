@@ -71,6 +71,68 @@ describe('/POST api/recipes', () => {
   });
 });
 
+/**
+ * Test Modify Recipe
+ */
+describe('/PUT api/recipes', () => {
+  const validRecipeData = {
+    name: 'Updated Recipe One',
+    image: 'R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==',
+    ingredients: [{
+      name: 'Updated Ingredient One'
+    }],
+    directions: [{
+      name: 'Updated Direction One'
+    }]
+  };
+
+  const invalidRecipeData = {
+    name: '',
+    image: '',
+    ingredients: null,
+    directions: null
+  };
+
+  // Modify Recipe with valid data
+  it('it should sucessfully modify a recipe', (done) => {
+    chai.request(server)
+      .put('/api/recipes/1')
+      .send(validRecipeData)
+      .end((err, res) => {
+        // Check that HTTP response is OK
+        res.should.have.status(200);
+
+        // Check response body
+        res.body.should.be.a('object');
+
+        // Check for id
+        res.body.should.have.property('id');
+        done();
+      });
+  });
+
+  // Modify Recipe with invalid data
+  it('it should return bad request with an error object', (done) => {
+    chai.request(server)
+      .put('/api/recipes/1')
+      .send(invalidRecipeData)
+      .end((err, res) => {
+        // Check that HTTP response is BAD REQUEST
+        res.should.have.status(400);
+
+        // Check response body
+        res.body.should.be.a('object');
+
+        // Check that response contains statusText and value is Bad Request
+        res.body.should.have.property('statusText').eql('Bad Request');
+
+        // Check that response contains list of errors
+        res.body.should.have.property('errors');
+        done();
+      });
+  });
+});
+
 describe('/GET api/recipes', () => {
   it('it should GET all the recipes on the platform', (done) => {
     chai.request(server)
