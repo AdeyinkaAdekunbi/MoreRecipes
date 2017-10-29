@@ -183,8 +183,85 @@ describe('/GET api/recipes', () => {
         // Check response body
         res.body.should.be.a('array');
 
-        // Check that number of recipies is the same as that of our dummy response
+        // Check that number of recipies matches that of our dummy response
         res.body.length.should.be.eql(3);
+        done();
+      });
+  });
+});
+
+/**
+ * Test Add Review
+ */
+describe('/POST api/recipes<recipeId>/reviews', () => {
+  const validReviewData = {
+    message: 'Review One'
+  };
+
+  const invalidvalidReviewData = {
+    message: ''
+  };
+
+  // Add Review with valid data
+  it('it should sucessfully add a new review', (done) => {
+    chai.request(server)
+      .post('/api/recipes/1/reviews')
+      .send(validReviewData)
+      .end((err, res) => {
+        // Check that HTTP response is CREATED
+        res.should.have.status(201);
+
+        // Check response body
+        res.body.should.be.a('object');
+
+        // Check for id
+        res.body.should.have.property('id');
+
+        // Check for url
+        res.body.should.have.property('url');
+
+        done();
+      });
+  });
+
+  // Add Review with invalid data
+  it('it should return bad request with an error object', (done) => {
+    chai.request(server)
+      .post('/api/recipes/1/reviews')
+      .send(invalidvalidReviewData)
+      .end((err, res) => {
+        // Check that HTTP response is BAD REQUEST
+        res.should.have.status(400);
+
+        // Check response body
+        res.body.should.be.a('object');
+
+        // Check that response contains statusText and value is Bad Request
+        res.body.should.have.property('statusText').eql('Bad Request');
+
+        // Check that response contains list of errors
+        res.body.should.have.property('errors');
+        done();
+      });
+  });
+
+  // Add Review with invalid recipe id
+  it('it should return bad request with an error object', (done) => {
+    chai.request(server)
+      .post('/api/recipes/one/reviews')
+      .send(validReviewData)
+      .end((err, res) => {
+        // Check that HTTP response is BAD REQUEST
+        res.should.have.status(400);
+
+        // Check response body
+        res.body.should.be.a('object');
+
+        // Check that response contains statusText and value is Bad Request
+        res.body.should.have.property('statusText').eql('Bad Request');
+
+        // Check that response contains list of errors
+        res.body.should.have.property('errors');
         done();
       });
   });
