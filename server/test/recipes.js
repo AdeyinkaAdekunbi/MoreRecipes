@@ -74,7 +74,7 @@ describe('/POST api/recipes', () => {
 /**
  * Test Modify Recipe
  */
-describe('/PUT api/recipes', () => {
+describe('/PUT api/recipes/<recipeId>', () => {
   const validRecipeData = {
     name: 'Updated Recipe One',
     image: 'R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==',
@@ -116,6 +116,42 @@ describe('/PUT api/recipes', () => {
     chai.request(server)
       .put('/api/recipes/1')
       .send(invalidRecipeData)
+      .end((err, res) => {
+        // Check that HTTP response is BAD REQUEST
+        res.should.have.status(400);
+
+        // Check response body
+        res.body.should.be.a('object');
+
+        // Check that response contains statusText and value is Bad Request
+        res.body.should.have.property('statusText').eql('Bad Request');
+
+        // Check that response contains list of errors
+        res.body.should.have.property('errors');
+        done();
+      });
+  });
+});
+
+/**
+ * Test Delete Recipe
+ */
+describe('/DELETE api/recipes/<recipeId>', () => {
+  // Delete Recipe with valid id
+  it('it should sucessfully delete a recipe', (done) => {
+    chai.request(server)
+      .delete('/api/recipes/1')
+      .end((err, res) => {
+        // Check that HTTP response is NO CONTENT
+        res.should.have.status(204);
+        done();
+      });
+  });
+
+  // Delete Recipe with invalid id
+  it('it should return bad request with an error object', (done) => {
+    chai.request(server)
+      .delete('/api/recipes/one')
       .end((err, res) => {
         // Check that HTTP response is BAD REQUEST
         res.should.have.status(400);
