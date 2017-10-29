@@ -8,7 +8,7 @@ chai.use(chaiHttp);
 /**
  * Test Add Recipe
  */
-describe('/POST api/recipes', () => {
+describe('/POST api/v1/recipes', () => {
   const validRecipeData = {
     name: 'Recipe One',
     image: 'R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==',
@@ -30,7 +30,7 @@ describe('/POST api/recipes', () => {
   // Add Recipe with valid data
   it('it should sucessfully add a new recipe', (done) => {
     chai.request(server)
-      .post('/api/recipes')
+      .post('/api/v1/recipes')
       .send(validRecipeData)
       .end((err, res) => {
         // Check that HTTP response is CREATED
@@ -52,7 +52,7 @@ describe('/POST api/recipes', () => {
   // Add recipe with invalid data
   it('it should return bad request with an error object', (done) => {
     chai.request(server)
-      .post('/api/recipes')
+      .post('/api/v1/recipes')
       .send(invalidRecipeData)
       .end((err, res) => {
         // Check that HTTP response is BAD REQUEST
@@ -74,7 +74,7 @@ describe('/POST api/recipes', () => {
 /**
  * Test Modify Recipe
  */
-describe('/PUT api/recipes/<recipeId>', () => {
+describe('/PUT api/v1/recipes/<recipeId>', () => {
   const validRecipeData = {
     name: 'Updated Recipe One',
     image: 'R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==',
@@ -96,7 +96,7 @@ describe('/PUT api/recipes/<recipeId>', () => {
   // Modify Recipe with valid data
   it('it should sucessfully modify a recipe', (done) => {
     chai.request(server)
-      .put('/api/recipes/1')
+      .put('/api/v1/recipes/1')
       .send(validRecipeData)
       .end((err, res) => {
         // Check that HTTP response is OK
@@ -114,7 +114,7 @@ describe('/PUT api/recipes/<recipeId>', () => {
   // Modify Recipe with invalid data
   it('it should return bad request with an error object', (done) => {
     chai.request(server)
-      .put('/api/recipes/1')
+      .put('/api/v1/recipes/1')
       .send(invalidRecipeData)
       .end((err, res) => {
         // Check that HTTP response is BAD REQUEST
@@ -136,11 +136,11 @@ describe('/PUT api/recipes/<recipeId>', () => {
 /**
  * Test Delete Recipe
  */
-describe('/DELETE api/recipes/<recipeId>', () => {
+describe('/DELETE api/v1/recipes/<recipeId>', () => {
   // Delete Recipe with valid id
   it('it should sucessfully delete a recipe', (done) => {
     chai.request(server)
-      .delete('/api/recipes/1')
+      .delete('/api/v1/recipes/1')
       .end((err, res) => {
         // Check that HTTP response is NO CONTENT
         res.should.have.status(204);
@@ -151,7 +151,7 @@ describe('/DELETE api/recipes/<recipeId>', () => {
   // Delete Recipe with invalid id
   it('it should return bad request with an error object', (done) => {
     chai.request(server)
-      .delete('/api/recipes/one')
+      .delete('/api/v1/recipes/one')
       .end((err, res) => {
         // Check that HTTP response is BAD REQUEST
         res.should.have.status(400);
@@ -172,10 +172,10 @@ describe('/DELETE api/recipes/<recipeId>', () => {
 /**
  * Test GET All Recipes
  */
-describe('/GET api/recipes', () => {
+describe('/GET api/v1/recipes', () => {
   it('it should GET all the recipes on the platform', (done) => {
     chai.request(server)
-      .get('/api/recipes')
+      .get('/api/v1/recipes')
       .end((err, res) => {
         // Check that HTTP response is OK
         res.should.have.status(200);
@@ -193,7 +193,7 @@ describe('/GET api/recipes', () => {
 /**
  * Test Add Review
  */
-describe('/POST api/recipes<recipeId>/reviews', () => {
+describe('/POST api/v1/recipes<recipeId>/reviews', () => {
   const validReviewData = {
     message: 'Review One'
   };
@@ -205,7 +205,7 @@ describe('/POST api/recipes<recipeId>/reviews', () => {
   // Add Review with valid data
   it('it should sucessfully add a new review', (done) => {
     chai.request(server)
-      .post('/api/recipes/1/reviews')
+      .post('/api/v1/recipes/1/reviews')
       .send(validReviewData)
       .end((err, res) => {
         // Check that HTTP response is CREATED
@@ -227,7 +227,7 @@ describe('/POST api/recipes<recipeId>/reviews', () => {
   // Add Review with invalid data
   it('it should return bad request with an error object', (done) => {
     chai.request(server)
-      .post('/api/recipes/1/reviews')
+      .post('/api/v1/recipes/1/reviews')
       .send(invalidvalidReviewData)
       .end((err, res) => {
         // Check that HTTP response is BAD REQUEST
@@ -248,7 +248,7 @@ describe('/POST api/recipes<recipeId>/reviews', () => {
   // Add Review with invalid recipe id
   it('it should return bad request with an error object', (done) => {
     chai.request(server)
-      .post('/api/recipes/one/reviews')
+      .post('/api/v1/recipes/one/reviews')
       .send(validReviewData)
       .end((err, res) => {
         // Check that HTTP response is BAD REQUEST
@@ -270,10 +270,10 @@ describe('/POST api/recipes<recipeId>/reviews', () => {
 /**
  * Test GET recipes with the most upvotes
  */
-describe('/GET api/recipes?sort=upvotes&order=des', () => {
+describe('/GET api/v1/recipes?sort=upvotes&order=des', () => {
   it('it should GET recipes with the most upvotes', (done) => {
     chai.request(server)
-      .get('/api/recipes?sort=upvotes&order=des')
+      .get('/api/v1/recipes?sort=upvotes&order=des')
       .end((err, res) => {
         // Check that HTTP response is OK
         res.should.have.status(200);
