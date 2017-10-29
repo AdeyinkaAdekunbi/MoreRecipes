@@ -169,13 +169,21 @@ describe('/DELETE api/recipes/<recipeId>', () => {
   });
 });
 
+/**
+ * Test GET All Recipes
+ */
 describe('/GET api/recipes', () => {
   it('it should GET all the recipes on the platform', (done) => {
     chai.request(server)
       .get('/api/recipes')
       .end((err, res) => {
+        // Check that HTTP response is OK
         res.should.have.status(200);
+
+        // Check response body
         res.body.should.be.a('array');
+
+        // Check that number of recipies is the same as that of our dummy response
         res.body.length.should.be.eql(3);
         done();
       });
