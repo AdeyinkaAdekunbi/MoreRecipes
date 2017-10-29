@@ -4,3 +4,5 @@ node_js:
 before_script: 
   - "cd server/"
   - "npm install"
+after_success:
+  - npm run coveralls
