@@ -266,3 +266,33 @@ describe('/POST api/recipes<recipeId>/reviews', () => {
       });
   });
 });
+
+/**
+ * Test GET recipes with the most upvotes
+ */
+describe('/GET api/recipes?sort=upvotes&order=des', () => {
+  it('it should GET recipes with the most upvotes', (done) => {
+    chai.request(server)
+      .get('/api/recipes?sort=upvotes&order=des')
+      .end((err, res) => {
+        // Check that HTTP response is OK
+        res.should.have.status(200);
+
+        // Check response body
+        res.body.should.be.a('object');
+
+        // Check that response has sortedBy
+        res.body.should.have.property('sortedBy').eql('upvotes');
+
+        // Check that response has sortOrder
+        res.body.should.have.property('sortOrder').eql('des');
+
+        // Check that response has recipes
+        res.body.should.have.property('recipes').a('array');
+
+        // Check that number of recipies matches that of our dummy response
+        res.body.recipes.length.should.be.eql(3);
+        done();
+      });
+  });
+});
