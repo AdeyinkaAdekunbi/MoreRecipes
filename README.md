@@ -1,1 +1,1 @@
-# MoreRecipes
+# MoreRecipes [![Build Status](https://travis-ci.org/AdeyinkaAdekunbi/MoreRecipes.svg?branch=dev)](https://travis-ci.org/AdeyinkaAdekunbi/MoreRecipes) [![Coverage Status](https://coveralls.io/repos/github/AdeyinkaAdekunbi/MoreRecipes/badge.svg?branch=coveralls-experiment)](https://coveralls.io/github/AdeyinkaAdekunbi/MoreRecipes?branch=coveralls-experiment) 
