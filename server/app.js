@@ -3,12 +3,14 @@ import logger from 'morgan';
 import bodyParser from 'body-parser';
 import validation from 'express-validation';
 import routes from './routes';
+import dotenv from 'dotenv';
 
 // Set up the express app
 const app = express();
 
 // Log requests to the console.
 app.use(logger('dev'));
+dotenv.config();
 
 // Parse incoming requests data (https://github.com/expressjs/body-parser)
 app.use(bodyParser.json());
@@ -27,8 +29,8 @@ app.use((err, req, res, next) => {
   res.status(500);
 });
 
-app.listen(1234,() => {
-  console.log("Listening on port 1234");
+app.listen(port,() => {
+  console.log("Listening on port ", port);
 });
-
+let port=process.env.PORT || 1234;
 export default app;
