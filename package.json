@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:dev": "nodemon --exec babel-node ./bin/www",
+    "start": "babel-node nodemon --exec babel-node ./server/app.js ",
+    "start:dev": "nodemon --exec babel-node ./server/app.js",
     "test": "nyc --reporter=lcovonly mocha --compilers js:babel-core/register --timeout 10000 --exit",
     "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
@@ -19,9 +20,7 @@
     "express-validation": "^1.0.2",
     "joi": "^13.0.1",
     "mocha": "^4.0.1",
-    "morgan": "^1.9.0"
-  },
-  "devDependencies": {
+    "morgan": "^1.9.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.1",

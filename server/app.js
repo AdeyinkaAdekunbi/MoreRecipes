@@ -27,4 +27,8 @@ app.use((err, req, res, next) => {
   res.status(500);
 });
 
+app.listen(1234,() => {
+  console.log("Listening on port 1234");
+});
+
 export default app;
