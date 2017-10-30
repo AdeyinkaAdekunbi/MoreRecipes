@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node nodemon --exec babel-node ./server/app.js ",
+    "start": "babel-node  --exec babel-node ./server/app.js ",
     "start:dev": "nodemon --exec babel-node ./server/app.js",
     "test": "nyc --reporter=lcovonly mocha --compilers js:babel-core/register --timeout 10000 --exit",
     "coveralls": "cat ./coverage/lcov.info | coveralls"
