@@ -1,9 +1,30 @@
+.navbar {
+  background: #0bbe5f; }
+  .navbar .navbar-brand {
+    color: #ffffff; }
+  .navbar .nav-item .nav-link {
+    color: #ffffff; }
+  .navbar .nav-item.active {
+    font-weight: bold; }
+    .navbar .nav-item.active .nav-link {
+      color: #ffffff; }
+
 .main-content.container {
-  margin: 1em auto; }
+  margin: 1em auto;
+  margin-bottom: 60px; }
+  .main-content.container .fav-section img {
+    width: 100%; }
   .main-content.container .catalog-search {
     width: 50%; }
-  .main-content.container .fav-section {
-    border-left: 1px solid rgba(0, 0, 0, 0.125); }
+  .main-content.container .action-buttons img {
+    height: 1.25em;
+    margin-right: .7em; }
+  .main-content.container .action-buttons div {
+    display: inline-block;
+    position: relative; }
+  .main-content.container .action-buttons .badge {
+    margin-left: 1.5em;
+    padding-bottom: 0; }
   .main-content.container .card .card-img-top {
     width: 100%; }
   .main-content.container .badge {
@@ -16,11 +37,17 @@
     .main-content.container .mini-form button {
       width: 100%; }
   .main-content.container .profile div {
-    margin: 2em auto; }
-  .main-content.container .profile img {
-    height: 256px;
-    border-radius: 50%;
-    margin: 1em auto; }
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23); }
+  .main-content.container .profile .profile-img {
+    padding: 2em;
+    float: left;
+    border-right: 2px dashed #eeeeee; }
+    .main-content.container .profile .profile-img img {
+      height: 128px;
+      border-radius: 50%; }
+  .main-content.container .profile .profile-data {
+    padding: 2em;
+    float: left; }
   .main-content.container .profile span {
     display: block;
     font-weight: bold; }
@@ -28,10 +55,12 @@
     width: 70%; }
   .main-content.container .recipe-detail .featured-img {
     width: 512px; }
-  .main-content.container .recipe-detail .reviews .carousel {
-    height: 250px; }
-    .main-content.container .recipe-detail .reviews .carousel .carousel-item {
-      text-align: center; }
-      .main-content.container .recipe-detail .reviews .carousel .carousel-item span {
-        width: 70%;
-        margin: 0 auto; }
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 56px;
+  line-height: 56px;
+  background-color: #ffffff;
+  text-align: center; }
