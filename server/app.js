@@ -1,10 +1,10 @@
+import dotenv from 'dotenv';
 import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 import validation from 'express-validation';
 import routes from './routes';
-import dotenv from 'dotenv';
-
+import db from './database/models';
 // Set up the express app
 const app = express();
 
@@ -29,8 +29,11 @@ app.use((err, req, res, next) => {
   res.status(500);
 });
 
-app.listen(port,() => {
-  console.log("Listening on port ", port);
+db.sequelize.sync().then(() => {
+  const port = process.env.PORT || 1234;
+  app.listen(port, () => {
+    console.log('Listening on port ', port);
+  });
 });
-let port=process.env.PORT || 1234;
+
 export default app;

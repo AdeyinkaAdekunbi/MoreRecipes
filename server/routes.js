@@ -5,8 +5,14 @@ import newRecipe from './validations/newRecipe';
 import updateRecipe from './validations/updateRecipe';
 import reviewRecipe from './validations/reviewRecipe';
 import deleteRecipe from './validations/deleteRecipe';
+import userController from './controllers/userController';
+
+const userCon = new userController();
 
 module.exports = (app) => {
+  app.post('/api/v1/users/signup', userCon.signup);
+  app.post('/api/v1/users/signin', userCon.signin);
+  
   /**
    * Add A Recipe
    * @returns {object} A JSON object with the id and url of the added recipe
