@@ -1,11 +1,46 @@
+.navbar {
+    background: #0bbe5f;
+    .navbar-brand {
+        color: #ffffff;
+    }
+    .nav-item {
+        .nav-link {
+            color: #ffffff;
+        }
+        &.active {
+            font-weight: bold;
+            .nav-link {
+                color: #ffffff;
+            }
+        }
+    }
+}
+
 .main-content {
     &.container {
         margin: 1em auto;
+        margin-bottom: 60px;
+        .fav-section {
+            img {
+                width: 100%;
+            }
+        }
         .catalog-search {
             width: 50%;
         }
-        .fav-section {
-            border-left: 1px solid rgba(0, 0, 0, 0.125);
+        .action-buttons {
+            img {
+                height: 1.25em;
+                margin-right: .7em;
+            }
+            div {
+                display: inline-block;
+                position: relative;
+            }
+            .badge {
+                margin-left: 1.5em;
+                padding-bottom: 0;
+            }
         }
         .card {
             .card-img-top {
@@ -26,12 +61,20 @@
         }
         .profile {
             div {
-                margin: 2em auto;
+                box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16), 0px 3px 6px rgba(0, 0, 0, 0.23);
             }
-            img {
-                height: 256px;
-                border-radius: 50%;
-                margin: 1em auto;
+            .profile-img {
+                padding: 2em;
+                float: left;
+                border-right: 2px dashed #eeeeee;
+                img {
+                    height: 128px;
+                    border-radius: 50%;
+                }
+            }
+            .profile-data {
+                padding: 2em;
+                float: left;
             }
             span {
                 display: block;
@@ -45,18 +88,16 @@
             .featured-img {
                 width: 512px;
             }
-            .reviews {
-                .carousel {
-                    height: 250px;
-                    .carousel-item {
-                        text-align: center;
-                        span {
-                            width: 70%;
-                            margin: 0 auto;
-                        }
-                    }
-                }
-            }
         }
     }
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 56px;
+    line-height: 56px;
+    background-color: #ffffff;
+    text-align: center;
 }

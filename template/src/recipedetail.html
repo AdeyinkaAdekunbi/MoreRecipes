@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+    <nav class="navbar navbar-toggleable-md  bg-faded">
         <div class="container">
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
@@ -18,7 +18,7 @@
             <a class="navbar-brand" href="#">More Recipes</a>
 
             <div class="collapse navbar-collapse" id="menu">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="index.html">Home</a>
                     </li>
@@ -30,9 +30,6 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="myprofile.html">My Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
                     </li>
                 </ul>
             </div>
@@ -64,34 +61,6 @@
                 <div class="col-md-8">
                     <img class="featured-img" src="assets/chicken.jpg" />
                 </div>
-                <div class="col-md-4 reviews">
-                    <div id="reviews" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#reviews" data-slide-to="0" class="active"></li>
-                            <li data-target="#reviews" data-slide-to="1"></li>
-                            <li data-target="#reviews" data-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner" role="listbox">
-                            <div class="carousel-item active">
-                                <span class="align-middle">Sample recipe review text submitted by a user</span>
-                            </div>
-                            <div class="carousel-item">
-                                <span class="align-middle">Sample recipe review text submitted by a user</span>
-                            </div>
-                            <div class="carousel-item">
-                                <span class="align-middle">Sample recipe review text submitted by a user</span>
-                            </div>
-                        </div>
-                        <a class="carousel-control-prev" href="#reviews" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#reviews" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </div>
-                </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
@@ -115,22 +84,34 @@
                     </ul>
                 </div>
             </div>
-            <div class="row my-5">
-                <div class="col-md-1">
-                    <img src="assets/favorite.png" />
+            <div class="row my-2">
+                <div class="col-md-12">
+                    <h5 class="my-3">Reviews</h5>
+                    <blockquote class="blockquote">
+                        <p class="mb-0">Sample recipe review text submitted by a registered user</p>
+                        <footer class="blockquote-footer">Adeyinka Adekunbi</footer>
+                    </blockquote>
+                    <blockquote class="blockquote">
+                        <p class="mb-0">Sample recipe review text submitted by a registered user</p>
+                        <footer class="blockquote-footer">Adeyinka Adekunbi</footer>
+                    </blockquote>
+                    <blockquote class="blockquote">
+                        <p class="mb-0">Sample recipe review text submitted by a registered user</p>
+                        <footer class="blockquote-footer">Adeyinka Adekunbi</footer>
+                    </blockquote>
+                    <blockquote class="blockquote">
+                        <p class="mb-0">Sample recipe review text submitted by a registered user</p>
+                        <footer class="blockquote-footer">Adeyinka Adekunbi</footer>
+                    </blockquote>
                 </div>
-                <div class="col-md-1">
-                    <img src="assets/upvote.png" />
-                    <span class="badge badge-light">4</span>
-                </div>
-                <div class="col-md-1">
-                    <img src="assets/downvote.png" />
-                    <span class="badge badge-light">4</span>
-                </div>
-
             </div>
         </div>
     </div>
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted small">&copy; 2017 Adeyinka Adekunbi &bull; Andela Bootcamp Cycle 28</span>
+        </div>
+    </footer>
     <script src="js/jquery.min.js"></script>
     <script src="js/tether.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
