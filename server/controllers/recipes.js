@@ -10,13 +10,15 @@ module.exports = {
       additionalNote: req.body.additionalNote,
       ingredients: req.body.ingredients,
       userId: req.AuthUser.id
-    }).then(newRecipe => {
-      res.status(201).send(newRecipe);    
+    }).then((newRecipe) => {
+      res.status(201).send(newRecipe);
     });
   },
   updateRecipe(req, res) {
+
     // Return Dummy Data with HTTP OK
-    res.status(200).send(updatedRecipe());
+    db.Recipe.findById(req.param.id)
+    res.status(200).send('I exist');
   },
   deleteRecipe(req, res) {
     // Return Dummy Data with HTTP NO CONTENT

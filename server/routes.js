@@ -4,12 +4,11 @@ import * as reviewController from './controllers/reviews';
 import updateRecipe from './validations/updateRecipe';
 import reviewRecipe from './validations/reviewRecipe';
 import deleteRecipe from './validations/deleteRecipe';
+import newRecipe from './validations/newRecipe';
 import userController from './controllers/userController';
 import signin from './validations/signin';
 import signup from './validations/signup';
 import authMiddleware from './middleware/auth';
-
-
 // const userCon = new userController();
 // const recipesCon = new recipeController();
 
@@ -31,13 +30,13 @@ module.exports = (app) => {
    * @returns {object} A JSON object with the id and name of the added recipe
    * @description An API route that allows a user add a recipe to the platform
    */
-  app.post('/api/v1/recipes', authMiddleware, recipeController.createRecipe);
+  app.post('/api/v1/recipes', authMiddleware, validate(newRecipe), recipeController.createRecipe);
   /**
    * Add A Recipe
    * @returns {object} A JSON object with the id and url of the added recipe
    * @description An API route that allows a user add a recipe to the platform
    */
-  //app.post('/api/v1/recipes', validate(newRecipe), recipeController.createRecipe);
+  // app.post('/api/v1/recipes', validate(newRecipe), recipeController.createRecipe);
 
   /**
    * Modify A Recipe
