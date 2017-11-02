@@ -14,6 +14,6 @@
     "dialect": "mysql"
   },
   "production": {
-   "use_env_variable": "DATABASE_URL"
+   "use_env_variable": "postgres://dagtcmqy:ehogsP48gZldUFWafCNTLC5YcKc3G7cq@elmer.db.elephantsql.com:5432/dagtcmqy"
   }
 }
