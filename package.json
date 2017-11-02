@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production node build/app.js",
-    "start:dev": "nodemon --exec babel-node ./server/app.js",
+    "start:dev": "./node_modules/.bin/cross-env NODE_ENV=development nodemon --exec babel-node ./server/app.js",
     "build": "babel ./server -d build --copy-files",
     "test": "nyc --reporter=lcovonly mocha --compilers js:babel-core/register ./server/test/recipes.js --timeout 10000 --exit",
     "coveralls": "cat ./coverage/lcov.info | coveralls",

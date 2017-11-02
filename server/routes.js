@@ -50,7 +50,7 @@ module.exports = (app) => {
    * Delete A Recipe
    * @description An API route that allows a user to delete a recipe
    */
-  app.delete('/api/v1/recipes/:recipeId', validate(deleteRecipe),
+  app.delete('/api/v1/recipes/:recipeId', authMiddleware, validate(deleteRecipe),
     recipeController.deleteRecipe);
 
   /**
