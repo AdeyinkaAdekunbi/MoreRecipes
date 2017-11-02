@@ -17,23 +17,17 @@ module.exports = {
   updateRecipe(req, res) {
 
     // Return Dummy Data with HTTP OK
-    db.Recipe.findById(req.param.id)
+   
     res.status(200).send('I exist');
   },
   deleteRecipe(req, res) {
     // Return Dummy Data with HTTP NO CONTENT
     res.status(204).send();
   },
+  
   getRecipes(req, res) {
-    const sortBy = req.query.sort;
-    const orderBy = req.query.order;
-
-    // Check if request has sort and order parameters,
-    // and return dummy upvoted data
-    if (sortBy && orderBy) {
-      res.status(200).send(sortedRecipes(req.query));
-    } else { // Unrecognised or No parameter is passed
-      res.status(200).send(allRecipes());
-    }
+    return db.Recipe.findAll()
+      .then(recipes => res.status(200).send(recipes))
+      .catch(error => res.status(400).send(error));
   },
 };
