@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 
 export default (req, res, next) => {
-  const token = req.body.token;
+  const token = req.body.token || req.headers('Authorization');
 
   jwt.verify(token, 'adekunbi', (error, data) => {
     if (error) {
