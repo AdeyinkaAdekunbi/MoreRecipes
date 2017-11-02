@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node build/app.jsc",
     "start:dev": "nodemon --exec babel-node ./server/app.js",
-    "build": "babel-node ./server -d build",
+    "build": "babel ./server -d build",
     "test": "nyc --reporter=lcovonly mocha --compilers js:babel-core/register ./server/test/recipes.js --timeout 10000 --exit",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
     "postinstall": "npm run build"
