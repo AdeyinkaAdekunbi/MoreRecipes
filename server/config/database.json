@@ -14,7 +14,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "dialect":"postgres",
-   "use_env_variable": "postgres://dagtcmqy:ehogsP48gZldUFWafCNTLC5YcKc3G7cq@elmer.db.elephantsql.com:5432/dagtcmqy"
+    "username": "dagtcmqy",
+    "password": "ehogsP48gZldUFWafCNTLC5YcKc3G7cq",
+    "database": "dagtcmqy",
+    "host": "elmer.db.elephantsql.com",
+    "dialect": "postgres"
   }
 }
