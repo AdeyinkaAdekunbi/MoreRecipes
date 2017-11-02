@@ -1,35 +1,35 @@
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     id: {
-      allowNull: false,
-      autoIncrement: true,
       primaryKey: true,
+      autoIncrement: true,
       type: DataTypes.INTEGER,
+      allowNull: false
     },
-    username: {
+    fullName: {
       type: DataTypes.STRING,
-      unique: true,
-      allowNull: false,
+      allowNull: false
     },
     email: {
       type: DataTypes.STRING,
-      unique: true,
       allowNull: false,
+      unique: true,
       validate: {
-        isEmail: true,
+        isEmail: true
       },
     },
     password: {
       type: DataTypes.STRING,
-      unique: true,
-      allowNull: false,
-    },
-  }, {
-    classMethods: {
-      associate(models) {
-        // associations can be defined here
-      },
-    },
+      allowNull: false
+    }
   });
+
+  User.associate = (models) => {
+    User.hasMany(models.Recipe, {
+      foreignKey: 'createdBy',
+      as: 'myRecipes',
+    });
+  };
+
   return User;
 };
