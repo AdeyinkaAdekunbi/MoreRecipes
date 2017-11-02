@@ -26,8 +26,7 @@ module.exports = (sequelize, DataTypes) => {
 
   User.associate = (models) => {
     User.hasMany(models.Recipe, {
-      foreignKey: 'createdBy',
-      as: 'myRecipes',
+      foreignKey: 'userId'
     });
   };
 

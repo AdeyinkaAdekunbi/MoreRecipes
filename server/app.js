@@ -30,7 +30,7 @@ app.use((err, req, res, next) => {
 });
 
 db.sequelize.sync().then(() => {
-  const port = process.env.PORT || 1234;
+  const port = process.env.PORT || 5678;
   app.listen(port, () => {
     console.log('Listening on port ', port);
   });

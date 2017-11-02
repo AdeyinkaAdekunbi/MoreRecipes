@@ -1,31 +1,50 @@
 import validate from 'express-validation';
 import * as recipeController from './controllers/recipes';
 import * as reviewController from './controllers/reviews';
-import newRecipe from './validations/newRecipe';
 import updateRecipe from './validations/updateRecipe';
 import reviewRecipe from './validations/reviewRecipe';
 import deleteRecipe from './validations/deleteRecipe';
 import userController from './controllers/userController';
+import signin from './validations/signin';
+import signup from './validations/signup';
+import authMiddleware from './middleware/auth';
 
-const userCon = new userController();
+
+// const userCon = new userController();
+// const recipesCon = new recipeController();
 
 module.exports = (app) => {
-  app.post('/api/v1/users/signup', userCon.signup);
-  app.post('/api/v1/users/signin', userCon.signin);
-  
+  /**
+   * user sign up
+   * @returns {object} A JSON object with a success message
+   * @description An API route that allows a user register to the endpoint
+   */
+  app.post('/api/v1/users/signup', validate(signup), userController.signup);
+  /**
+   * user sign in
+   * @returns {object} A JSON object with a token
+   * @description An API route that allows a user to login to the platform
+   */
+  app.post('/api/v1/users/signin', validate(signin), userController.signin);
+  /**
+   * Add A Recipe
+   * @returns {object} A JSON object with the id and name of the added recipe
+   * @description An API route that allows a user add a recipe to the platform
+   */
+  app.post('/api/v1/recipes', authMiddleware, recipeController.createRecipe);
   /**
    * Add A Recipe
    * @returns {object} A JSON object with the id and url of the added recipe
    * @description An API route that allows a user add a recipe to the platform
    */
-  app.post('/api/v1/recipes', validate(newRecipe), recipeController.createRecipe);
+  //app.post('/api/v1/recipes', validate(newRecipe), recipeController.createRecipe);
 
   /**
    * Modify A Recipe
    * @returns {object} A JSON object with the updated recipe data
    * @description An API route that allows a user to modify a recipe on platform
    */
-  app.put('/api/v1/recipes/:recipeId', validate(updateRecipe),
+  app.put('/api/v1/recipes/:recipeId', authMiddleware, validate(updateRecipe),
     recipeController.updateRecipe);
 
   /**

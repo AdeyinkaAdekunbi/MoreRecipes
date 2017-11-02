@@ -22,6 +22,15 @@ module.exports = (sequelize, DataTypes) => {
     additionalNote: {
       type: DataTypes.STRING,
       allowNull: true
+    },
+    userId: {
+      type: DataTypes.INTEGER,
+      onDelete: 'RESTRICT',
+      references: {
+        model: 'Users',
+        key: 'id',
+        as: 'userId'
+      }
     }
   });
 
