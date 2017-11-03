@@ -31,6 +31,9 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id',
         as: 'userId'
       }
+    },
+    image: {
+      type: DataTypes.STRING
     }
   });
 

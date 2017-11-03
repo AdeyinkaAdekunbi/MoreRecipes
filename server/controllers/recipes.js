@@ -24,6 +24,7 @@ module.exports = {
             description: req.body.description || recipe.description,
             additionalNote: req.body.additionalNote || recipe.additionalNote,
             ingredients: req.body.ingredients || recipe.ingredients,
+            image: req.body.image || recipe.image
           }).then(() => {
             return res.json('recipe updated');
           });

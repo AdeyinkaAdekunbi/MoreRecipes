@@ -32,6 +32,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       },
+      image: {
+        type: Sequelize.STRING
+      },
       userId: {
         type: Sequelize.INTEGER,
         onDelete: 'RESTRICT',
