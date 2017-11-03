@@ -2,12 +2,13 @@ import db from '../database/models/index';
 
 module.exports = {
   createRecipe(req, res) {
-    // Return Dummy Data with HTTP CREATED
+    // Return  Data with HTTP CREATED
     console.log(req.AuthUser);
     db.Recipe.create({
-      name: req.body.name,
+      fullName: req.body.name,
       description: req.body.description,
       additionalNote: req.body.additionalNote,
+      image: req.body.image,
       ingredients: req.body.ingredients,
       userId: req.AuthUser.id
     }).then((newRecipe) => {

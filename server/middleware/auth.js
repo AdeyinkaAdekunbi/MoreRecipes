@@ -5,8 +5,8 @@ export default (req, res, next) => {
 
   jwt.verify(token, 'adekunbi', (error, data) => {
     if (error) {
-      return res.json('Unauthenticated');
-    } 
+      return res.json('You are not authenticated ');
+    }
     console.log(data);
     req.AuthUser = data.user;
     next();
