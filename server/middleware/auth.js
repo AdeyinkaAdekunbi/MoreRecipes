@@ -1,13 +1,12 @@
 import jwt from 'jsonwebtoken';
 
 export default (req, res, next) => {
-  const token = req.body.token || req.headers('Authorization');
+  const token = req.get('Authorization');
 
   jwt.verify(token, 'adekunbi', (error, data) => {
     if (error) {
-      return res.json('You are not authenticated ');
+      return res.status(401).json({ message: 'You are not authenticated' });
     }
-    console.log(data);
     req.AuthUser = data.user;
     next();
   });

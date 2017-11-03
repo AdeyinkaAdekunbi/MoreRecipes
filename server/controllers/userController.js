@@ -1,7 +1,6 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import db from '../database/models/index';
-const User = require('../database/models').User;
 
 /**
  *
@@ -20,7 +19,9 @@ export default class userController {
       password: bcrypt.hashSync(req.body.password, 10)
     })
       .then(user => res.status(201).send(user))
-      .catch(error => res.status(400).send(error));
+      .catch(error => res.status(400).send({
+        message: error.errors[0].message // return the description of the first error object
+      }));
   }
 
   /**
@@ -35,7 +36,7 @@ export default class userController {
 
     return db.User.findOne({ where: { email } }).then((user) => {
       if (!user) {
-        return res.status(400).json('User with email not found.');
+        return res.status(400).json({ message: 'User with email not found.' });
       }
       if (bcrypt.compareSync(password, user.password)) {
         jwt.sign({ user: user.get() }, 'adekunbi', (error, token) => {
@@ -43,12 +44,11 @@ export default class userController {
           return res.json({ token });
         });
       } else {
-        return res.json({ message: 'Password is wrong' });
+        return res.status(401).json({ message: 'Password is wrong' });
       }
-    })
-      .catch((error) => {
-        console.log(error);
-        return res.status(500).json(error);
-      });
+    }).catch((error) => {
+      console.log(error);
+      return res.status(500).json(error);
+    });
   }
 }
