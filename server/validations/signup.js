@@ -1,6 +1,6 @@
 import Joi from 'joi';
 
-// Define and export validation for Sign In Request
+// Define and export validation for Sign up Request
 module.exports = {
   body: {
     fullName: Joi.string().min(5).required(),
