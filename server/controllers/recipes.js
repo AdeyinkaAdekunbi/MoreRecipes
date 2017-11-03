@@ -5,7 +5,7 @@ module.exports = {
     // Return  Data with HTTP CREATED
     console.log(req.AuthUser);
     db.Recipe.create({
-      fullName: req.body.name,
+      name: req.body.name,
       description: req.body.description,
       additionalNote: req.body.additionalNote,
       image: req.body.image,
