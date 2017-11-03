@@ -16,9 +16,14 @@
     width: 100%; }
   .main-content.container .catalog-search {
     width: 50%; }
+  .main-content.container .btn {
+    cursor: pointer; }
   .main-content.container .action-buttons img {
     height: 1.25em;
-    margin-right: .7em; }
+    margin-right: .7em;
+    cursor: pointer; }
+    .main-content.container .action-buttons img:hover {
+      font-size: 110%; }
   .main-content.container .action-buttons div {
     display: inline-block;
     position: relative; }
@@ -43,7 +48,7 @@
     float: left;
     border-right: 2px dashed #eeeeee; }
     .main-content.container .profile .profile-img img {
-      height: 128px;
+      height: 256px;
       border-radius: 50%; }
   .main-content.container .profile .profile-data {
     padding: 2em;
@@ -62,5 +67,6 @@
   width: 100%;
   height: 56px;
   line-height: 56px;
-  background-color: #ffffff;
-  text-align: center; }
+  text-align: center;
+  background-color: #0bbe5f;
+  color: #ffffff; }
