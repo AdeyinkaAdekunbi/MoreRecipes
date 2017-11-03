@@ -13,11 +13,8 @@
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
-  "production": {
-    "username": "dagtcmqy",
-    "password": "ehogsP48gZldUFWafCNTLC5YcKc3G7cq",
-    "database": "dagtcmqy",
-    "host": "elmer.db.elephantsql.com",
-    "dialect": "postgres"
+  production: {
+    use_env_variable: 'DATABASE_URL',
+    dialect: "postgres";
   }
 }
