@@ -1,16 +1,14 @@
 import validate from 'express-validation';
-import * as recipeController from './controllers/recipes';
-import * as reviewController from './controllers/reviews';
+import userController from './controllers/userController';
+import recipeController from './controllers/recipes';
+import reviewController from './controllers/reviews';
 import updateRecipe from './validations/updateRecipe';
 import reviewRecipe from './validations/reviewRecipe';
 import deleteRecipe from './validations/deleteRecipe';
 import newRecipe from './validations/newRecipe';
-import userController from './controllers/userController';
 import signin from './validations/signin';
 import signup from './validations/signup';
 import authMiddleware from './middleware/auth';
-// const userCon = new userController();
-// const recipesCon = new recipeController();
 
 module.exports = (app) => {
   /**
