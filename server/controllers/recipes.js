@@ -10,9 +10,10 @@ module.exports = {
       image: req.body.image,
       ingredients: req.body.ingredients,
       userId: req.AuthUser.id
-    }).then((newRecipe) => {
-      res.status(201).send(newRecipe);
-    }).catch(error => res.status(400).send({
+    }).then(newRecipe => res.status(201).send({
+      id: newRecipe.id,
+      url: `${req.protocol}://${req.headers.host}/api/v1/recipes/${newRecipe.id}`
+    })).catch(error => res.status(400).send({
       message: error.errors[0].message // return the description of the first error object
     }));
   },
@@ -31,19 +32,10 @@ module.exports = {
             additionalNote: req.body.additionalNote || recipe.additionalNote,
             image: req.body.image || recipe.image,
             ingredients: req.body.ingredients || recipe.ingredients,
-<<<<<<< HEAD
-            image: req.body.image || recipe.image
-          }).then(() => {
-            return res.json('recipe updated');
-          });
-        } else {
-          return res.status(404).json('Recipe not found');
-=======
           }).then(() => res.status(200).json(recipe)
           ).catch(error => res.status(400).send({
             message: error.errors[0].message // return the description of the first error object
           }));
->>>>>>> ed1b77d63c2e3e7bb64089e75881d8a2d3c1e74d
         }
       }).catch(error => res.status(500).json(error.message));
   },
@@ -62,8 +54,7 @@ module.exports = {
       }).catch(error => res.status(500).json(error.message));
   },
   getRecipes(req, res) {
-    return db.Recipe.findAll()
-      .then(recipes => res.status(200).send(recipes))
+    return db.Recipe.findAll().then(recipes => res.status(200).send(recipes))
       .catch(error => res.status(400).send(error));
   },
 };

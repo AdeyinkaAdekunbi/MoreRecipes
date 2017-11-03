@@ -17,15 +17,16 @@ export default class userController {
       fullName: req.body.fullName,
       email: req.body.email,
       password: bcrypt.hashSync(req.body.password, 10)
-    })
-      .then(user => res.status(201).send(user))
-      .catch(error => res.status(400).send({
-        message: error.errors[0].message // return the description of the first error object
-      }));
+    }).then(user => res.status(201).send({
+      id: user.id,
+      url: `${req.protocol}://${req.headers.host}/api/v1/users/${user.id}`
+    })).catch(error => res.status(400).send({
+      message: error.errors[0].message // return the description of the first error object
+    }));
   }
 
   /**
-   * Signs up a user
+   * Signs in a user
    * @param {*} req
    * @param {*} res
    * @returns {*} res
@@ -46,9 +47,6 @@ export default class userController {
       } else {
         return res.status(401).json({ message: 'Password is wrong' });
       }
-    }).catch((error) => {
-      console.log(error);
-      return res.status(500).json(error);
-    });
+    }).catch(error => res.status(500).json(error));
   }
 }
